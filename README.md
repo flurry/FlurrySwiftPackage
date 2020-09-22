@@ -3,7 +3,6 @@
 ## Table of Contents
 
 - [Installation](#installation)
-  - [iOS](#ios)
 
 ## Installation
 
