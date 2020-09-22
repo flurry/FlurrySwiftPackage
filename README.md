@@ -17,15 +17,21 @@ OR
 
 1. On the Build Phases screen -> Choose "Link Binary With Libraries" -> Click "+" -> Choose "Add Other" -> Choose "Add Package Dependency"
 
+<img src="SupportingFiles/packageDependency.png" height="700"/>
 
 2. Enter the following repo in the url section: **https://github.com/flurrydev/FlurrySwiftPackage/**
 
+<img src="SupportingFiles/packageRepository.png"/>
 
 3. You should see the following: 
+
+<img src="SupportingFiles/packageOptions.png"/>
 
 Choose the version option to get the latest version. 11.1.0 is currently the only version available as a swift package.
 
 4. Click "Next" and the following page should appear:
+
+<img src="SupportingFiles/swiftPackages.png" height="500"/>
 
 5. Choose the Packages needed for your project. 
 
