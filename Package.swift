@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Flurry",
     platforms: [
-        .iOS("14")
+        .iOS("13")
         ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
