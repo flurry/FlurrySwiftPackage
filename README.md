@@ -1,4 +1,4 @@
-# Flurry SDK
+# Flurry SDK - Swift Package beta 
 
 ## Table of Contents
 
