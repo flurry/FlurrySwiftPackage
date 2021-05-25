@@ -18,7 +18,7 @@ OR
 
 <img src="SupportingFiles/packageDependency.png" height="700"/>
 
-2. Enter the following repo in the url section: **https://github.com/flurry/FlurrySwiftPackage/**
+2. Enter the following repo in the url section: **https://github.com/flurrydev/FlurrySwiftPackage/**
 
 <img src="SupportingFiles/packageRepository.png"/>
 
