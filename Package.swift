@@ -1,6 +1,5 @@
 // swift-tools-version:5.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
-
 import PackageDescription
 
 let package = Package(
@@ -23,10 +22,6 @@ let package = Package(
         .library(
             name: "FlurryConfigSPM",
             targets: ["FlurryConfig"]
-        ),
-        .library(
-            name: "FlurryAdsSPM",
-            targets: ["FlurryAds"]
         )
     ],
     dependencies: [
@@ -49,10 +44,6 @@ let package = Package(
             dependencies: ["FlurryConfigBinary"]
         ),
         .target(
-            name: "FlurryAds",
-            dependencies: ["FlurryAdsBinary"]
-        ),
-        .target(
             name: "FlurryCrashReporter",
             dependencies: ["FlurryCrashReporterBinary"]
         ),
@@ -67,10 +58,6 @@ let package = Package(
         .binaryTarget(
             name: "FlurryConfigBinary",
             path: "artifacts/FlurryConfig.xcframework"
-        ),
-        .binaryTarget(
-            name: "FlurryAdsBinary",
-            path: "artifacts/FlurryAds.xcframework"
         ),
         .binaryTarget(
             name: "FlurryCrashReporterBinary",
@@ -89,9 +76,5 @@ let package = Package(
             name: "FlurryConfigSPM",
             dependencies: ["FlurryConfig"]
         ),
-        .testTarget(
-            name: "FlurryAdsSPM",
-            dependencies: ["FlurryAds"]
-        )
     ]
 )
