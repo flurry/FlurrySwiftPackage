@@ -6,7 +6,11 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
+<<<<<<< HEAD
 		1a4zPnsAfLpwmGUHiISzsCVd6z8=
+=======
+		se1g1Se+hsD3M+3FshJ/alw8z3A=
+>>>>>>> br_11.3.0
 		</data>
 	</dict>
 	<key>files2</key>
@@ -268,11 +272,19 @@
 		<dict>
 			<key>hash</key>
 			<data>
+<<<<<<< HEAD
 			1a4zPnsAfLpwmGUHiISzsCVd6z8=
 			</data>
 			<key>hash2</key>
 			<data>
 			JDbhhoJspb6n3vs0VPnBuXjxzbAoNPZ4Rt6+owpx520=
+=======
+			se1g1Se+hsD3M+3FshJ/alw8z3A=
+			</data>
+			<key>hash2</key>
+			<data>
+			hcF8o1htrenjk3onNipZhRlOtAkWLYHCZLSQVDKtHU8=
+>>>>>>> br_11.3.0
 			</data>
 		</dict>
 	</dict>

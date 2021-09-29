@@ -35,7 +35,12 @@ typedef enum {
     FlurryEventParamsCountExceeded,
     FlurryEventLogCountExceeded,
     FlurryEventLoggingDelayed,
+<<<<<<< HEAD
     FlurryEventAnalyticsDisabled
+=======
+    FlurryEventAnalyticsDisabled,
+    FlurryEventParametersMismatched
+>>>>>>> br_11.3.0
 } FlurryEventRecordStatus;
 
 
@@ -100,6 +105,28 @@ typedef enum {
 
 @end
 
+<<<<<<< HEAD
+=======
+#if TARGET_OS_IOS
+/*!
+ *  @brief Provides delegate method for receiving callbacks related to publisher data is fetched.
+ */
+@protocol FlurryFetchObserver <NSObject>
+
+@optional
+
+/*!
+ *  @brief Invoked when publisher data is fetched
+ *  @since 11.3.0
+ *
+ *  @param publisherData A dictionary of key-value paired configuration for publisher segmentation data, nil if data not fetched or not changed.
+ */
+- (void)onFetched:(NSDictionary<NSString *, NSString *> *_Nullable)publisherData;
+
+@end
+#endif
+
+>>>>>>> br_11.3.0
 /*!
  *  @brief Provides all available methods for defining and reporting Analytics from use
  *  of your app.
@@ -1232,6 +1259,52 @@ typedef enum {
  */
 + (void)openPrivacyDashboard:(nullable void(^)(BOOL success))completionHandler;
 
+<<<<<<< HEAD
+=======
+#if TARGET_OS_IOS
+#pragma mark - Publisher Segmentation
+
+/*!
+ *  @brief indicate whether the publisher data is fetched and ready to use
+ *  @since 11.3.0
+ *  @return YES if the publisher segmentation data is fetched and ready to use
+ */
++ (BOOL)isFetchFinished;
+
+/*!
+ *  @brief register as an observer with given execution queue
+ *  @since 11.3.0
+ *  @param observer an observing object
+ *  @param queue the execution queue on which the observer callbacks will be executed
+ */
++ (void)registerFetchObserver:(id<FlurryFetchObserver> _Nonnull)observer withExecutionQueue:(dispatch_queue_t _Nonnull)queue;
+
+/*!
+ *  @brief unregister as an observer
+ *  @Since 11.3.0
+ *  @param observer an observing object
+ */
++ (void)unregisterFetchObserver:(id<FlurryFetchObserver> _Nonnull)observer;
+
+/*!
+ *  @brief Retrive the fetched publisher data
+ *  @Since 11.3.0
+ *  @return the key-value paired configuration for publisher segmentation data. If not yet fetched,
+ *  will return the cached segments data.
+ */
++ (nullable NSDictionary<NSString *, NSString *> *)getPublisherData;
+
+/*!
+ *  @brief Fetch the publisher data
+ *  @Since 11.3.0
+ *  Fetch will trigger an async call to the server.  Server has a throttle
+ *  where when the user calls fetch Config many times in a row, it will
+ *  basically do a no-op.
+ */
++ (void)fetch;
+
+#endif
+>>>>>>> br_11.3.0
 @end
 
 #endif

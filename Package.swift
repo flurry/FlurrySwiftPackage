@@ -22,7 +22,11 @@ let package = Package(
         .library(
             name: "FlurryConfigSPM",
             targets: ["FlurryConfig"]
+<<<<<<< HEAD
         )
+=======
+        ),
+>>>>>>> br_11.3.0
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
