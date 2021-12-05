@@ -22,13 +22,7 @@ OR
 
 <img src="SupportingFiles/packageRepository.png"/>
 
-3. You should see the following: 
-
-<img src="SupportingFiles/packageOptions.png"/>
-
-Choose the version option to get the latest version. 11.1.0 is currently the only version available as a swift package.
-
-4. Click "Next" and the following page should appear:
+3. Click "Add Package" and the following page should appear:
 
 <img src="SupportingFiles/swiftPackages.png" height="500"/>
 
