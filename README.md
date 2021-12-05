@@ -18,7 +18,7 @@ OR
 
 <img src="SupportingFiles/packageDependency.png" height="700"/>
 
-2. Enter the following repo in the url section: **https://github.com/flurrydev/FlurrySwiftPackage/**
+2. Enter the following repo in the url section: **https://github.com/flurry/FlurrySwiftPackage/**
 
 <img src="SupportingFiles/packageRepository.png"/>
 
@@ -34,29 +34,11 @@ Choose the version option to get the latest version. 11.1.0 is currently the onl
 
 5. Choose the Packages needed for your project. 
 
-  *Note: Flurry Analytics is required to use FlurryAds, FlurryConfig and FlurryMessaging.
+  *Note: Flurry Analytics is required to use FlurryConfig and FlurryMessaging.
 
 6. The Flurry Analytics Swift Package requires the System Configuration framework (SystemConfiguration.framework).
 
   a. On the Build Phases page, under "Link Binary With Libraries", click on "+" and add "SystemConfiguration.framework"
-
-  Similarly, Flurry Ads requires all of the following frameworks (follow step 6.a above):
-
-  * Ad Support
-
-  * AV Foundation
-
-  * Core Media
-
-  * Core Telephony
-
-  * libz.dylib
-
-  * Safari Services
-
-  * StoreKit
-
-  * WebKit
 
 7. If you are using Objective C proceed with the integration instructions [here](https://developer.yahoo.com/flurry/docs/integrateflurry/ios/#initialize-flurry):
 
