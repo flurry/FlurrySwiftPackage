@@ -145,7 +145,8 @@
  * @param def the value to fall back on if no config value exists
  */
 - (NSString * _Nullable)getStringForKey:(nonnull NSString *)key
-                            withDefault:(NSString * _Nullable)def;
+                            withDefault:(NSString * _Nullable)def
+NS_SWIFT_NAME(getString(key:defaultVal:));
 
 /*!
  * @brief Get the boolean value for the given key
@@ -159,7 +160,8 @@
  * @param def the value to fall back on if no config value exists
  */
 - (BOOL)getBoolForKey:(nonnull NSString *)key
-          withDefault:(BOOL)def;
+          withDefault:(BOOL)def
+NS_SWIFT_NAME(getBoolean(key:defaultVal:));
 
 /*!
  * @brief Get the number value for the given key
@@ -174,7 +176,8 @@
  * @param def the value to fall back on if no config value exists
  */
 - (NSNumber * _Nullable)getNumberForKey:(nonnull NSString *)key
-                            withDefault:(NSNumber * _Nullable)def;
+                            withDefault:(NSNumber * _Nullable)def
+NS_SWIFT_NAME(getNumber(key:defaultVal:));
 
 /*!
  * @brief Register as an observer with the provided execution queue
@@ -187,6 +190,7 @@
  * @param observer the observing object
  * @param queue the execution queue on which the observer callbacks will be executed
  */
-- (void)registerObserver:(id _Nonnull)observer withExecutionQueue:(dispatch_queue_t _Nonnull)queue;
+- (void)registerObserver:(id _Nonnull)observer withExecutionQueue:(dispatch_queue_t _Nonnull)queue
+NS_SWIFT_NAME(registerObserver(_:executionQueue:));
 
 @end

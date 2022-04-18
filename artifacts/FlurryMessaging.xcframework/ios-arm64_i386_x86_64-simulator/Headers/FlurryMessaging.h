@@ -74,12 +74,13 @@ typedef void(^MessagingHandler)(void);
  *  @code
  -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
  {
- [Flurry setDeviceToken:deviceToken];
+ [FlurryMessaging setDeviceToken:deviceToken];
  }
  * @endcode
  *
  */
-+(void) setDeviceToken:(nullable NSData *)deviceToken;
++(void) setDeviceToken:(nullable NSData *)deviceToken
+NS_SWIFT_NAME(set(deviceToken:));
 
 /*!
  *  @brief (MANUAL INTEGRATION) Method to be called when a remote notfication is received
@@ -103,7 +104,8 @@ typedef void(^MessagingHandler)(void);
  *
  */
 #if TARGET_OS_IPHONE
-+(void) receivedRemoteNotification:(nonnull NSDictionary *)userInfo withCompletionHandler:(_Nullable MessagingHandler)completionHandler;
++(void) receivedRemoteNotification:(nonnull NSDictionary *)userInfo withCompletionHandler:(_Nullable MessagingHandler)completionHandler
+NS_SWIFT_NAME(receivedRemoteNotification(_:completionHandler:));
 #endif
 /*!
  *  @brief (MANUAL INTEGRATION) Method to be called when a notification is presented by the UNUserNotificationCenter when in foreground.
@@ -129,7 +131,8 @@ typedef void(^MessagingHandler)(void);
  *
  */
 
-+(void) presentNotification:(nonnull UNNotification *)notification withCompletionHandler:(_Nullable MessagingHandler)completionHandler API_AVAILABLE(ios(10.0));
++(void) presentNotification:(nonnull UNNotification *)notification withCompletionHandler:(_Nullable MessagingHandler)completionHandler API_AVAILABLE(ios(10.0))
+NS_SWIFT_NAME(presentNotification(_:completionHandler:));
 
 /*!
  *  @brief (MANUAL INTEGRATION) Method to be called when a action on a notfication is received from UNUserNotificationCenter.
@@ -154,7 +157,8 @@ typedef void(^MessagingHandler)(void);
  *
  */
 #if !TARGET_OS_TV
-+(void) receivedNotificationResponse:(nonnull UNNotificationResponse *)response withCompletionHandler:(_Nullable MessagingHandler) completionHandler API_AVAILABLE(ios(10.0));
++(void) receivedNotificationResponse:(nonnull UNNotificationResponse *)response withCompletionHandler:(_Nullable MessagingHandler) completionHandler API_AVAILABLE(ios(10.0))
+NS_SWIFT_NAME(receivedNotificationResponse(_:completionHandler:));
 #endif
 /*!
  *  @brief Helper method which identifies a Flurry generated Push Notification
@@ -214,7 +218,8 @@ typedef void(^MessagingHandler)(void);
  * @endcode
  *
  */
-+(void) setMessagingDelegate:(nonnull id<FlurryMessagingDelegate>)delegate ;
++(void) setMessagingDelegate:(nonnull id<FlurryMessagingDelegate>)delegate
+NS_SWIFT_NAME(set(delegate:));
 
 
 /*!
@@ -232,6 +237,7 @@ typedef void(^MessagingHandler)(void);
  * @endcode
  *
  */
-+(void) setMessagingDelegate:(nonnull id<FlurryMessagingDelegate>)delegate withCallbackQueue:(nonnull dispatch_queue_t)messagingCallbackQueue;
++(void) setMessagingDelegate:(nonnull id<FlurryMessagingDelegate>)delegate withCallbackQueue:(nonnull dispatch_queue_t)messagingCallbackQueue
+NS_SWIFT_NAME(set(delegate:callbackQueue:));
 @end
 #endif

@@ -16,12 +16,12 @@
  *  @since 4.2.0
  *
  */
-typedef enum {
-    FlurryLogLevelNone = 0,         //No output
-    FlurryLogLevelCriticalOnly,     //Default, outputs only critical log events
-    FlurryLogLevelDebug,            //Debug level, outputs critical and main log events
-    FlurryLogLevelAll               //Highest level, outputs all log events
-} FlurryLogLevel;
+typedef NS_ENUM(NSUInteger, FlurryLogLevel){
+    FlurryLogLevelNone NS_SWIFT_NAME(none) = 0,         // No output
+    FlurryLogLevelCriticalOnly NS_SWIFT_NAME(criticalOnly),     // Default, outputs only critical log events
+    FlurryLogLevelDebug NS_SWIFT_NAME(debug),            // Debug level, outputs critical and main log events
+    FlurryLogLevelAll NS_SWIFT_NAME(all),               // Highest level, outputs all log events
+};
 
 
 #if !TARGET_OS_WATCH
@@ -30,14 +30,14 @@ typedef enum {
 @interface FlurrySessionBuilder : NSObject
 
 /*!
-*@brief An api to send ccpa compliance data to Flurry on the user's choice to opt out or opt in to data sale to third parties.
-*   @since 10.1.0
-*
-*
-* @param value  boolean true if the user wants to opt out of data sale, the default value is false
-*/
+ *  @brief An api to send ccpa compliance data to Flurry on the user's choice to opt out or opt in to data sale to third parties.
+ *  @since 10.1.0
+ *
+ *  @param value  boolean true if the user wants to opt out of data sale, the default value is false
+ */
 
-- (FlurrySessionBuilder*) withDataSaleOptOut:(BOOL)value;
+- (FlurrySessionBuilder*) withDataSaleOptOut:(BOOL)value
+NS_SWIFT_NAME(build(dataSaleOptOut:));
 
 
 /*!
@@ -51,7 +51,8 @@ typedef enum {
  *
  *  @param value The custom version name.
  */
-- (FlurrySessionBuilder*) withAppVersion:(NSString *)value;
+- (FlurrySessionBuilder*) withAppVersion:(NSString *)value
+NS_SWIFT_NAME(build(appVersion:));
 
 
 /*!
@@ -64,7 +65,8 @@ typedef enum {
  *
  *  @param value The time in seconds to set the session timeout to.
  */
-- (FlurrySessionBuilder*) withSessionContinueSeconds:(NSInteger)value;
+- (FlurrySessionBuilder*) withSessionContinueSeconds:(NSInteger)value
+NS_SWIFT_NAME(build(sessionContinueSeconds:));
 
 
 /*!
@@ -76,7 +78,8 @@ typedef enum {
  *
  *  @param value @c YES to enable collection of crash reports.
  */
-- (FlurrySessionBuilder*) withCrashReporting:(BOOL)value;
+- (FlurrySessionBuilder*) withCrashReporting:(BOOL)value
+NS_SWIFT_NAME(build(crashReportingEnabled:));
 
 /*!
  *  @brief Generates debug logs to console.
@@ -91,7 +94,8 @@ typedef enum {
  *  @param value Log level
  *
  */
-- (FlurrySessionBuilder*) withLogLevel:(FlurryLogLevel) value;
+- (FlurrySessionBuilder*) withLogLevel:(FlurryLogLevel) value
+NS_SWIFT_NAME(build(logLevel:));
 
 
 
@@ -112,7 +116,8 @@ typedef enum {
  *
  *  @param value @c YES to show errors in debug logs, @c NO to omit errors in debug logs.
  */
-- (FlurrySessionBuilder*) withShowErrorInLog:(BOOL) value;
+- (FlurrySessionBuilder*) withShowErrorInLog:(BOOL) value
+NS_SWIFT_NAME(build(showErrorInLogEnabled:));
 
 
 /*!
@@ -127,7 +132,8 @@ typedef enum {
  *                  @see (FlurryConsent#initWithGDPRScope:andConsentStrings:)
  */
 
-- (FlurrySessionBuilder*) withConsent:(FlurryConsent*)consent;
+- (FlurrySessionBuilder*) withConsent:(FlurryConsent*)consent
+NS_SWIFT_NAME(build(consent:));
 
 
 /*!
@@ -140,7 +146,8 @@ typedef enum {
  *
  */
 
-- (FlurrySessionBuilder*) withIAPReportingEnabled:(BOOL) value;
+- (FlurrySessionBuilder*) withIAPReportingEnabled:(BOOL) value
+NS_SWIFT_NAME(build(iapReportingEnabled:));
 
 /*!
  *  @brief Enables opting out of background sessions being counted towards total sessions.
@@ -153,7 +160,8 @@ typedef enum {
  *
  */
 
-- (FlurrySessionBuilder*) withIncludeBackgroundSessionsInMetrics:(BOOL) value;
+- (FlurrySessionBuilder*) withIncludeBackgroundSessionsInMetrics:(BOOL) value
+NS_SWIFT_NAME(build(includeBackgroundSessionInMetrics:));
 
 /*!
  *  @brief Set the Session Origin for the Flurry session.
@@ -163,7 +171,8 @@ typedef enum {
  *
  *  @param origin The session origin value.
  */
-- (FlurrySessionBuilder*) withSessionOrigin:(NSString*) origin;
+- (FlurrySessionBuilder*) withSessionOrigin:(NSString*) origin
+NS_SWIFT_NAME(build(sessionOrigin:));
 
 /*!
  *  @brief Set the Session Origin Version for the Flurry session.
@@ -173,7 +182,8 @@ typedef enum {
  *
  *  @param version The session origin version value.
  */
-- (FlurrySessionBuilder*) withSessionOriginVerion:(NSString*) version;
+- (FlurrySessionBuilder*) withSessionOriginVerion:(NSString*) version
+NS_SWIFT_NAME(build(sessionOriginVersion:));
 
 /*!
  *  @brief Set the Session OriginSets Paramters for the Flurry session.
@@ -183,7 +193,8 @@ typedef enum {
  *
  *  @param parameters The session origin parameters.
  */
-- (FlurrySessionBuilder*) withSessionOriginParameters:(NSDictionary*) parameters;
+- (FlurrySessionBuilder*) withSessionOriginParameters:(NSDictionary*) parameters
+NS_SWIFT_NAME(build(sessionOriginParameters:));
 
 /*!
  *  @brief Set the Deeplink for the Flurry session.
@@ -193,7 +204,8 @@ typedef enum {
  *
  *  @param deeplink The session deeplink value.
  */
-- (FlurrySessionBuilder*) withSessionDeeplink:(NSString*) deeplink;
+- (FlurrySessionBuilder*) withSessionDeeplink:(NSString*) deeplink
+NS_SWIFT_NAME(build(sessionDeepLink:));
 
 /*!
  *  @brief Set the Session properties for the Flurry session.
@@ -203,7 +215,8 @@ typedef enum {
  *
  *  @param properties The session paramaters.
  */
-- (FlurrySessionBuilder*) withSessionProperties:(NSDictionary*) properties;
+- (FlurrySessionBuilder*) withSessionProperties:(NSDictionary*) properties
+NS_SWIFT_NAME(build(sessionProperties:));
 
 
 #if TARGET_OS_TV
@@ -219,7 +232,8 @@ typedef enum {
  *
  *  @param value The period after which a partial session report is sent to Flurry.
  */
-- (FlurrySessionBuilder*) withTVSessionReportingInterval:(NSInteger) value;
+- (FlurrySessionBuilder*) withTVSessionReportingInterval:(NSInteger) value
+NS_SWIFT_NAME(build(tvSessionReportingInterval:));
 
 /*!
  *  @brief Sets the minimum number of events before a partial session report is sent to Flurry.
@@ -232,7 +246,8 @@ typedef enum {
  *
  *  @param value The number of events after which partial session report is sent to Flurry.
  */
-- (FlurrySessionBuilder*) withTVEventCountThreshold:(NSInteger) value;
+- (FlurrySessionBuilder*) withTVEventCountThreshold:(NSInteger) value
+NS_SWIFT_NAME(build(tvEventCountThreshold:));
 #endif
 
 @end

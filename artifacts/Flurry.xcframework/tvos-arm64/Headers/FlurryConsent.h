@@ -28,7 +28,9 @@
  *  @note  ConsentStrings must be provided if "isGDPRScope" is set to YES for the consent information to be valid
  *
  */
-- (FlurryConsent*) initWithGDPRScope:(BOOL)isGDPRScope andConsentStrings:(NSDictionary*)consentStrings;
+
+- (instancetype) initWithGDPRScope:(BOOL)isGDPRScope andConsentStrings:(NSDictionary*)consentStrings
+NS_SWIFT_NAME(init(isGDPRScope:consentString:));
 
 
 /*!

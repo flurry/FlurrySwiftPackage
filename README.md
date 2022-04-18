@@ -1,43 +1,188 @@
-# Flurry SDK - Swift Package beta 
+# Flurry SDK
+
+[![pod](https://img.shields.io/cocoapods/v/Flurry-iOS-SDK)](https://cocoapods.org/pods/Flurry-iOS-SDK)
+[![platform](https://img.shields.io/cocoapods/p/Flurry-iOS-SDK)](https://cocoapods.org/pods/Flurry-iOS-SDK)
+[![license](https://img.shields.io/github/license/flurry/flurry-ios-sdk)](https://github.com/flurry/Flurry-iOS-SDK)
 
 ## Table of Contents
 
 - [Installation](#installation)
+  - [iOS](#ios)
+  - [watchOS](#watchos)
+  - [tvOS](#tvos)
+- [Requirements](#requirements)
+- [Examples](#examples)
+- [Suppport](#support)
+- [License](#license)
 
 ## Installation
 
-#### Note: The Flurry Swift Package requires XCode 12 or higher and Swift 5.3 or higher
+To install FlurrySDK from CocoaPods, please follow the instructions below. Remember to include `use_frameworks!` if your app target is in Swift.
 
-To add Flurry to your app with Swift Package Manager start in XCode with:
+### iOS
 
-1. File -> Swift Packages -> Add Package Dependency 
+To enable Flurry Analytics:
 
-OR
+```ruby
+pod 'Flurry-iOS-SDK/FlurrySDK'
+```
 
-1. On the Build Phases screen -> Choose "Link Binary With Libraries" -> Click "+" -> Choose "Add Other" -> Choose "Add Package Dependency"
+To enable Flurry Ad serving: 
 
-<img src="SupportingFiles/packageDependency.png" height="700"/>
+```ruby
+pod 'Flurry-iOS-SDK/FlurrySDK'
+pod 'Flurry-iOS-SDK/FlurryAds'
+```
 
-2. Enter the following repo in the url section: **https://github.com/flurry/FlurrySwiftPackage/**
+To enable Flurry Config:
 
-<img src="SupportingFiles/packageRepository.png"/>
+```ruby
+pod 'Flurry-iOS-SDK/FlurryConfig'
+```
 
-3. Click "Add Package" and the following page should appear:
+To enable Flurry Messaging:
 
-<img src="SupportingFiles/swiftPackages.png" height="500"/>
+```ruby
+pod 'Flurry-iOS-SDK/FlurryMessaging'
+```
 
-5. Choose the Packages needed for your project. 
+### watchOS
 
-  *Note: Flurry Analytics is required to use FlurryConfig and FlurryMessaging.
+To use FlurrySDK for Apple Watch 1.x Extension:   
 
-6. The Flurry Analytics Swift Package requires the System Configuration framework (SystemConfiguration.framework).
+```ruby
+target 'Your Apple Watch 1.x Extension Target' do 
+  pod 'Flurry-iOS-SDK/FlurryWatchSDK'
+end   
+```
 
-  a. On the Build Phases page, under "Link Binary With Libraries", click on "+" and add "SystemConfiguration.framework"
+To use FlurrySDK for Apple Watch 2.x Extension:    
 
-7. If you are using Objective C proceed with the integration instructions [here](https://developer.yahoo.com/flurry/docs/integrateflurry/ios/#initialize-flurry):
+```ruby
+target 'Your Apple Watch 2.x Extension Target' do 
+  platform :watchos, '2.0'
+  pod 'Flurry-iOS-SDK/FlurrySDK'
+end   
+```
 
-[https://developer.yahoo.com/flurry/docs/integrateflurry/ios/#initialize-flurry](https://developer.yahoo.com/flurry/docs/integrateflurry/ios/#initialize-flurry)
+### tvOS
 
-8. If you are using Swift you will need to add the Flurry header files in a bridging header file. Detailed instructions for this are found [here](https://developer.yahoo.com/flurry/docs/integrateflurry/ios-manual/#swift-sdk-integration):
+To use FlurrySDK for tvOS apps:
 
-[https://developer.yahoo.com/flurry/docs/integrateflurry/ios-manual/#swift-sdk-integration](https://developer.yahoo.com/flurry/docs/integrateflurry/ios-manual/#swift-sdk-integration)
+```ruby
+target 'Your tvOS Application' do
+  platform :tvos, '10.0'
+  pod 'Flurry-iOS-SDK/FlurrySDK'
+end
+```
+
+To enable Flurry Messaging for tvOS:
+
+```ruby
+pod 'Flurry-iOS-SDK/FlurryMessaging'
+```
+
+## Requirements
+
+* iOS 10.0+
+* tvOS 10.0+
+* watchOS 1.0+
+
+## Examples
+
+Listed below are brief examples of initializing and using Flurry in your project. For detailed instructions, please [check our documentation](https://developer.yahoo.com/flurry/docs/).
+
+### Initialize Flurry
+
+* iOS/tvOS
+
+  To initialize Flurry, please import Flurry in your Application Delegate and start a Flurry session inside `applicationDidFinishLaunching`, as described below.
+
+  ```swift
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+      let sessionBuilder = FlurrySessionBuilder()
+          .withLogLevel(FlurryLogLevelAll)
+          .withCrashReporting(true)
+          .withAppVersion("1.0")
+          .withIAPReportingEnabled(true)
+      Flurry.startSession("Your API Key", with: sessionBuilder)
+      return true
+  }
+  ```
+
+* watchOS
+
+  Please follow [our instructions here](https://developer.yahoo.com/flurry/docs/integrateflurry/watchos/).
+
+### Log Events
+
+Use this to log normal events and timed events in your app.
+
+* iOS/tvOS
+
+  ```swift
+  // Normal events
+  Flurry.logEvent("Event", withParameters: ["Key": "Value"])
+
+  // Timed events
+  Flurry.logEvent("Event", withParameters: ["Key": "Value"], timed: true)
+  Flurry.endTimedEvent("Event", withParameters: ["Key": "Value"])
+  
+  // Standard events
+  let param = FlurryParamBuilder()
+      .setDouble(34.99, for: FlurryParamBuilder.totalAmount())
+      .setBoolean(true, for: FlurryParamBuilder.success())
+      .setString("book 1", for: FlurryParamBuilder.itemName())
+      .setString("This is an awesome book to purchase !!!", forKey: "note")
+  Flurry.logStandardEvent(FlurryEvent.FLURRY_EVENT_PURCHASED, withParameters: param)
+  ```
+  Please see our [sample project here](https://github.com/flurry/iOS-StandardEventSample).
+
+
+* watchOS
+
+  ```swift
+  FlurryWatch.logWatchEvent("Event", withParameters: ["Key": "Value"])
+  ```
+
+### Log Error (iOS/tvOS)
+
+Use this to log exceptions and/or errors that occur in your app. Flurry will report the first 10 errors that occur in each session.
+
+```swift
+Flurry.logError("ERROR_NAME", message: "ERROR_MESSAGE", exception: e)
+```
+
+### Track User Demographics (iOS/tvOS)
+
+After identifying the user, use this to log the user’s assigned ID, username, age and gender in your system.
+
+```swift
+Flurry.setUserID("USER_ID")
+Flurry.setAge(20)
+Flurry.setGender("f") // "f" for female and "m" for male
+```
+
+### Session Origins and Attributes (iOS/tvOS)
+
+This allows you to specify session origin and deep link attached to each session, or add a custom parameterized session parameters. You can also add an SDK origin specified by origin name and origin version.
+
+```swift
+Flurry.addSessionOrigin("SESSION_ORIGIN")
+Flurry.addSessionOrigin("SESSION_ORIGIN", withDeepLink: "DEEPLINK")
+Flurry.sessionProperties(["key": "value"])
+Flurry.addOrigin("ORIGIN_NAME", withVersion: "ORIGIN_VERSION")
+Flurry.addOrigin("ORIGIN_NAME", withVersion: "ORIGIN_VERSION", withParameters: ["key": "value"])
+```
+
+## Support
+
+* [Flurry Documentation](https://developer.yahoo.com/flurry/docs/)
+* [FAQs for Flurry](https://developer.yahoo.com/flurry/docs/faq/)
+* [Flurry Support](https://developer.yahoo.com/support/flurry/)
+
+## License
+
+Copyright (c) 2021 Yahoo. All rights reserved.
+
+This project is licensed under the terms of the [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0) open source license. Please refer to [LICENSE](LICENSE) for the full terms. Your use of Flurry is governed by [Flurry Terms of Service](https://developer.yahoo.com/flurry/legal-privacy/terms-service/).

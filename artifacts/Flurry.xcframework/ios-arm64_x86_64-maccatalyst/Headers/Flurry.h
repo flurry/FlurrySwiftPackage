@@ -19,25 +19,25 @@
 /*!
  *  @brief Enum for payment transaction state
  */
-typedef enum {
-    FlurryPaymentTransactionStatePurchasing = 0,
-    FlurryPaymentTransactionStateSuccess = 1,
-    FlurryPaymentTransactionStateFailure = 2,
-    FlurryPaymentTransactionStateRestored = 3,
-    FlurryPaymentTransactionStateDeferred = 4
-} FlurryPaymentTransactionState;
+typedef NS_ENUM(NSUInteger, FlurryPaymentTransactionState) {
+    FlurryPaymentTransactionStatePurchasing NS_SWIFT_NAME(purchasing) = 0,
+    FlurryPaymentTransactionStateSuccess NS_SWIFT_NAME(success),
+    FlurryPaymentTransactionStateFailure NS_SWIFT_NAME(failure),
+    FlurryPaymentTransactionStateRestored NS_SWIFT_NAME(restored),
+    FlurryPaymentTransactionStateDeferred NS_SWIFT_NAME(deffered)
+};
 
 
-typedef enum {
-    FlurryEventFailed = 0,
-    FlurryEventRecorded,
-    FlurryEventUniqueCountExceeded,
-    FlurryEventParamsCountExceeded,
-    FlurryEventLogCountExceeded,
-    FlurryEventLoggingDelayed,
-    FlurryEventAnalyticsDisabled,
-    FlurryEventParametersMismatched
-} FlurryEventRecordStatus;
+typedef NS_ENUM(NSUInteger, FlurryEventRecordStatus) {
+    FlurryEventFailed NS_SWIFT_NAME(failed) = 0,
+    FlurryEventRecorded NS_SWIFT_NAME(recorded),
+    FlurryEventUniqueCountExceeded NS_SWIFT_NAME(uniqueCountExceeded),
+    FlurryEventParamsCountExceeded NS_SWIFT_NAME(paramsCountExceeded),
+    FlurryEventLogCountExceeded NS_SWIFT_NAME(logCountExceeded),
+    FlurryEventLoggingDelayed NS_SWIFT_NAME(loggingDelayed),
+    FlurryEventAnalyticsDisabled NS_SWIFT_NAME(analyticsDisabled),
+    FlurryEventParametersMismatched NS_SWIFT_NAME(parametersMismatched)
+};
 
 
 /*!
@@ -46,27 +46,26 @@ typedef enum {
  *
  */
 
-typedef enum {
-    FlurrySyndicationReblog      = 0,
-    FlurrySyndicationFastReblog  = 1,
-    FlurrySyndicationSourceClick = 2,
-    FlurrySyndicationLike        = 3,
-    FlurrySyndicationShareClick  = 4,
-    FlurrySyndicationPostSend    = 5
-    
-}FlurrySyndicationEvent;
+typedef NS_ENUM(NSUInteger, FlurrySyndicationEvent){
+    FlurrySyndicationReblog NS_SWIFT_NAME(reblog) = 0,
+    FlurrySyndicationFastReblog NS_SWIFT_NAME(fastReblog),
+    FlurrySyndicationSourceClick NS_SWIFT_NAME(sourceClick),
+    FlurrySyndicationLike NS_SWIFT_NAME(like),
+    FlurrySyndicationShareClick NS_SWIFT_NAME(shareClick),
+    FlurrySyndicationPostSend NS_SWIFT_NAME(postSend)
+};
 
 extern NSString* _Nonnull const kSyndicationiOSDeepLink;
 extern NSString* _Nonnull const kSyndicationAndroidDeepLink;
 extern NSString* _Nonnull const kSyndicationWebDeepLink;
 
 
-typedef enum {
-    FlurryTransactionRecordFailed = 0,
-    FlurryTransactionRecorded,
-    FlurryTransactionRecordExceeded,
-    FlurryTransactionRecodingDisabled
-} FlurryTransactionRecordStatus;
+typedef NS_ENUM(NSUInteger, FlurryTransactionRecordStatus) {
+    FlurryTransactionRecordFailed NS_SWIFT_NAME(failed) = 0,
+    FlurryTransactionRecorded NS_SWIFT_NAME(recorded),
+    FlurryTransactionRecordExceeded NS_SWIFT_NAME(recordExceeded),
+    FlurryTransactionRecodingDisabled NS_SWIFT_NAME(recordingDisabled)
+};
 
 #if !TARGET_OS_WATCH
 
@@ -177,7 +176,8 @@ typedef enum {
  *
  *  @param value @c YES to show errors in debug logs, @c NO to omit errors in debug logs.
  */
-+ (void)setShowErrorInLogEnabled:(BOOL)value;
++ (void)setShowErrorInLogEnabled:(BOOL)value
+NS_SWIFT_NAME(set(showErrorInLogEnabled:));
 
 /*!
  *  @brief Generates debug logs to console.
@@ -192,7 +192,8 @@ typedef enum {
  *  @param value Log level
  *
  */
-+ (void)setLogLevel:(FlurryLogLevel)value;
++ (void)setLogLevel:(FlurryLogLevel)value
+NS_SWIFT_NAME(set(logLevel:));
 //@}
 
 
@@ -215,7 +216,8 @@ typedef enum {
  *
  
  */
-+ (void)setDelegate:(nonnull id<FlurryDelegate>)delegate;
++ (void)setDelegate:(nonnull id<FlurryDelegate>)delegate
+NS_SWIFT_NAME(set(delegate:));
 
 /*!
  *  @brief Set Flurry delegate for callback on session creation with a callback queue.
@@ -232,7 +234,8 @@ typedef enum {
  * @endcode
  *
  */
-+ (void)setDelegate:(nonnull id<FlurryDelegate>)delegate withCallbackQueue:(nonnull dispatch_queue_t)flurryCallbackQueue;
++ (void)setDelegate:(nonnull id<FlurryDelegate>)delegate withCallbackQueue:(nonnull dispatch_queue_t)flurryCallbackQueue
+NS_SWIFT_NAME(set(delegate:callbackQueue:));
 
 #pragma mark - start session APIs'
 
@@ -272,7 +275,8 @@ typedef enum {
  * @param apiKey The API key for this project.
  */
 
-+ (void)startSession:(nonnull NSString *)apiKey;
++ (void)startSession:(nonnull NSString *)apiKey
+NS_SWIFT_NAME(startSession(apiKey:));
 
 
 /*!
@@ -307,7 +311,8 @@ typedef enum {
  * @param options passed launchOptions from the applicatin's didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
  
  */
-+ (void) startSession:(nonnull NSString *)apiKey withOptions:(nullable id)options;
++ (void) startSession:(nonnull NSString *)apiKey withOptions:(nullable id)options
+NS_SWIFT_NAME(startSession(apiKey:options:));
 
 
 /*!
@@ -347,7 +352,8 @@ typedef enum {
  * @param sessionBuilder pass in the session builder object to specify that session construction options
  
  */
-+ (void) startSession:(nonnull NSString *)apiKey withOptions:(nullable id)options withSessionBuilder:(nullable FlurrySessionBuilder*) sessionBuilder;
++ (void) startSession:(nonnull NSString *)apiKey withOptions:(nullable id)options withSessionBuilder:(nullable FlurrySessionBuilder*) sessionBuilder
+NS_SWIFT_NAME(startSession(apiKey:options:sessionBuilder:));
 
 
 /*!
@@ -383,7 +389,8 @@ typedef enum {
  * @param apiKey The API key for this project.
  * @param sessionBuilder pass in the session builder object to specify that session construction options
  */
-+ (void) startSession:(nonnull NSString *)apiKey withSessionBuilder:(nullable FlurrySessionBuilder *)sessionBuilder;
++ (void) startSession:(nonnull NSString *)apiKey withSessionBuilder:(nullable FlurrySessionBuilder *)sessionBuilder
+NS_SWIFT_NAME(startSession(apiKey:sessionBuilder:));
 //@}
 
 #pragma mark - Session Details
@@ -459,7 +466,8 @@ typedef enum {
  *
  *  @param userID The app id for a user.
  */
-+ (void)setUserID:(nullable NSString *)userID;
++ (void)setUserID:(nullable NSString *)userID
+NS_SWIFT_NAME(set(userId:));
 
 /*!
  *  @brief Set your user's age in years.
@@ -474,7 +482,8 @@ typedef enum {
  *  @param age Reported age of user.
  *
  */
-+ (void)setAge:(int)age;
++ (void)setAge:(int)age
+NS_SWIFT_NAME(set(age:));
 
 /*!
  *  @brief Set your user's gender.
@@ -490,7 +499,8 @@ typedef enum {
  *  @param gender Reported gender of user.
  *
  */
-+ (void)setGender:(nonnull NSString *)gender;    // user's gender m or f
++ (void)setGender:(nonnull NSString *)gender
+NS_SWIFT_NAME(set(gender:)); // user's gender m or f
 
 //@}
 
@@ -528,41 +538,6 @@ typedef enum {
  */
 + (BOOL)trackPreciseLocation:(BOOL)state;
 
-//@}
-
-/** @name Session Reporting Calls
- *  Optional methods that can be called at any point to control session reporting.
- */
-//@{
-
-/*!
- *  @brief Set session to report when app closes.
- *  @since 2.7
- *  @deprecated since 10.0.2.
- *
- *  Use this method report session data when the app is closed. The default value is @c YES.
- *
- *  @note This method is rarely invoked in iOS >= 3.2 due to the updated iOS lifecycle.
- *
- *  @see #setSessionReportsOnPauseEnabled:
- *
- *  @param sendSessionReportsOnClose YES to send on close, NO to omit reporting on close.
- *
- */
-+ (void)setSessionReportsOnCloseEnabled:(BOOL)sendSessionReportsOnClose __attribute__ ((deprecated));
-
-/*!
- *  @brief Set session to report when app is sent to the background.
- *  @since 2.7
- *  @deprecated since 10.0.2.
- *
- *  Use this method report session data when the app is paused. The default value is @c YES.
- *
- *  @param setSessionReportsOnPauseEnabled YES to send on pause, NO to omit reporting on pause.
- *
- */
-+ (void)setSessionReportsOnPauseEnabled:(BOOL)setSessionReportsOnPauseEnabled __attribute__ ((deprecated));
-
 /*!
  *  @brief Enables implicit recording of Apple Store transactions.
  *  @since 7.9.0
@@ -573,7 +548,8 @@ typedef enum {
  *  @param value YES to enable transaction logging, NO to stop transaction logging.
  *
  */
-+ (void) setIAPReportingEnabled:(BOOL)value;
++ (void) setIAPReportingEnabled:(BOOL)value
+NS_SWIFT_NAME(set(iapReportingEnabled:));
 
 
 #pragma mark - Add sessionOrigin, originAttributes and sessionProperties
@@ -596,7 +572,8 @@ typedef enum {
  *
  *  @param sessionOriginName    Name of the origin.
  */
-+ (void)addSessionOrigin:(nonnull NSString *)sessionOriginName;
++ (void)addSessionOrigin:(nonnull NSString *)sessionOriginName
+NS_SWIFT_NAME(add(sessionOriginName:));
 
 /*!
  *  @brief Adds an session origin and deep link attached to each session specified by @c sessionOriginName and  @c deepLink.
@@ -619,7 +596,8 @@ typedef enum {
  *  @param deepLink             Url of the deep Link.
  */
 + (void)addSessionOrigin:(nonnull NSString *)sessionOriginName
-            withDeepLink:(nonnull NSString *)deepLink;
+            withDeepLink:(nonnull NSString *)deepLink
+NS_SWIFT_NAME(add(sessionOriginName:deepLink:));
 
 /*!
  *  @brief Adds a custom parameterized session parameters @c parameters.
@@ -674,7 +652,8 @@ typedef enum {
  *  @param originVersion Version string of the origin wrapper
  */
 + (void)addOrigin:(nonnull NSString *)originName
-      withVersion:(nonnull NSString *)originVersion;
+      withVersion:(nonnull NSString *)originVersion
+NS_SWIFT_NAME(add(originName:originVersion:));
 
 /*!
  *  @brief Adds a custom parameterized origin specified by @c originName with @c originVersion and @c parameters.
@@ -709,7 +688,8 @@ typedef enum {
  */
 + (void)addOrigin:(nonnull NSString *)originName
       withVersion:(nonnull NSString*)originVersion
-   withParameters:(nullable NSDictionary *)parameters;
+   withParameters:(nullable NSDictionary *)parameters
+NS_SWIFT_NAME(add(originName:originVersion:parameters:));
 
 #pragma mark - Event Logging
 
@@ -754,7 +734,8 @@ typedef enum {
  *
  *  @return enum FlurryEventRecordStatus for the recording status of the logged event.
  */
-+ (FlurryEventRecordStatus)logEvent:(nonnull NSString *)eventName;
++ (FlurryEventRecordStatus)logEvent:(nonnull NSString *)eventName
+NS_SWIFT_NAME(log(eventName:));
 
 /*!
  *  @brief Records a custom parameterized event specified by @c eventName with @c parameters.
@@ -801,7 +782,8 @@ typedef enum {
  *  @return enum FlurryEventRecordStatus for the recording status of the logged event.
  */
 + (FlurryEventRecordStatus)logEvent:(nonnull NSString *)eventName
-                     withParameters:(nullable NSDictionary *)parameters;
+                     withParameters:(nullable NSDictionary *)parameters
+NS_SWIFT_NAME(log(eventName:parameters:));
 
 /*!
  *  @brief Records a syndicated event specified by @c syndicationEvent.
@@ -826,7 +808,8 @@ typedef enum {
  */
 + (FlurryEventRecordStatus) logEvent:(FlurrySyndicationEvent) syndicationEvent
                        syndicationID:(nonnull NSString *) syndicationID
-                          parameters:(nullable NSDictionary *) parameters;
+                          parameters:(nullable NSDictionary *) parameters
+NS_SWIFT_NAME(log(syndicationEvent:syndicationID:parameters:));
 
 /*!
  *  @brief Records an Apple Store transaction.
@@ -840,62 +823,9 @@ typedef enum {
  *
  */
 + (void) logPaymentTransaction:(nonnull SKPaymentTransaction *)transaction
-                statusCallback:(nullable void(^)(FlurryTransactionRecordStatus))statusCallback;
+                statusCallback:(nullable void(^)(FlurryTransactionRecordStatus))statusCallback
+NS_SWIFT_NAME(log(transaction:statusCallback:));
 
-
-/*!
- *  @brief Records Apple store IAP transaction params and user defined transaction params manually.
- *  @since 10.0.0
- *
- *  @deprecated since 11.0.0.
- *  @param transactionId a string Id for this IAP transaction
- *  @param productId a string Id for this IAP transaction product
- *  @param quantity a string representation of quantity of items purchased
- *  @param price a string representation of price of the item
- *  @param currency a string representation of currency of the transaction
- *  @param productName a string representation of product name
- *  @param transactionState a string representation of 0 - 4 representing transaction state: 0:Purchasing, 1:Success, 2:Failure, 3:Restored, 4:Deferred
- *  @param transactionParams a dictionary of user defined transaction params to record
- *  @param statusCallback a callback gettign called when the status of ID that is associated with the event
- *
- */
-
-+ (void) logPaymentTransactionParamsWithTransactionId:(nonnull NSString *)transactionId
-                                            productId:(nonnull NSString *)productId
-                                             quantity:(nonnull NSString *)quantity
-                                                price:(nonnull NSString *)price
-                                             currency:(nonnull NSString *)currency
-                                          productName:(nonnull NSString *)productName
-                                     transactionState:(nonnull NSString *)transactionState
-                                    userDefinedParams:(nullable NSDictionary*)transactionParams
-                                       statusCallback:(nullable void(^)(FlurryTransactionRecordStatus))statusCallback __attribute__((deprecated("use +logFlurryPaymentTransactionParamsWithTransactionId:productId:quantity:price:currency:productName:transactionState:userDefinedParams:statusCallback:")));
-
-/*!
- *  @brief Records Apple store IAP transaction params and user defined transaction params manually.
- *  @since 11.0.0
- *
- *  @deprecated since 12.0.0
- *  @param transactionId a string Id for this IAP transaction
- *  @param productId a string Id for this IAP transaction product
- *  @param quantity an integer representation of quantity of items purchased
- *  @param price a float representation of price of the item
- *  @param currency a string representation of currency of the transaction
- *  @param productName a string representation of product name
- *  @param transactionState an enum to convert transaction state to integer: 0:Purchasing, 1:Success, 2:Failure, 3:Restored, 4:Deferred
- *  @param transactionParams a dictionary of user defined transaction params to record
- *  @param statusCallback a callback gettign called when the status of ID that is associated with the event
- *
- */
-
-+ (void) logFlurryPaymentTransactionParamsWithTransactionId:(nonnull NSString *)transactionId
-                                                  productId:(nonnull NSString *)productId
-                                                   quantity:(nonnull NSUInteger*)quantity
-                                                      price:(nonnull NSDecimalNumber*)price
-                                                   currency:(nonnull NSString *)currency
-                                                productName:(nonnull NSString *)productName
-                                           transactionState:(FlurryPaymentTransactionState)transactionState
-                                          userDefinedParams:(nullable NSDictionary *)transactionParams
-                                             statusCallback:(nullable void(^)(FlurryTransactionRecordStatus))statusCallback __attribute__((deprecated("use +logPaymentTransactionWithTransactionId:productId:quantity:price:currency:productName:transactionState:userDefinedParams:statusCallback:")));
 
 /*!
  *  @brief Records Apple store IAP transaction params and user defined transaction params manually.
@@ -921,7 +851,8 @@ typedef enum {
                                                 productName:(nonnull NSString *)productName
                                            transactionState:(FlurryPaymentTransactionState)transactionState
                                           userDefinedParams:(nullable NSDictionary *)transactionParams
-                                             statusCallback:(nullable void(^)(FlurryTransactionRecordStatus))statusCallback;
+                                             statusCallback:(nullable void(^)(FlurryTransactionRecordStatus))statusCallback
+NS_SWIFT_NAME(log(transactionId:productId:quantity:price:currency:productName:transactionState:transactionParams:statusCallback:));
 
 #pragma mark - Timed Event Logging
 
@@ -964,7 +895,8 @@ typedef enum {
  *
  *  @return enum FlurryEventRecordStatus for the recording status of the logged event.
  */
-+ (FlurryEventRecordStatus)logEvent:(nonnull NSString *)eventName timed:(BOOL)timed;
++ (FlurryEventRecordStatus)logEvent:(nonnull NSString *)eventName timed:(BOOL)timed
+NS_SWIFT_NAME(log(eventName:timed:));
 
 /*!
  *  @brief Records a custom parameterized timed event specified by @c eventName with @c parameters.
@@ -1013,7 +945,8 @@ typedef enum {
  *
  *  @return enum FlurryEventRecordStatus for the recording status of the logged event.
  */
-+ (FlurryEventRecordStatus)logEvent:(nonnull NSString *)eventName withParameters:(nullable NSDictionary *)parameters timed:(BOOL)timed;
++ (FlurryEventRecordStatus)logEvent:(nonnull NSString *)eventName withParameters:(nullable NSDictionary *)parameters timed:(BOOL)timed
+NS_SWIFT_NAME(log(eventName:parameters:timed:));
 
 /*!
  *  @brief Ends a timed event specified by @c eventName and optionally updates parameters with @c parameters.
@@ -1060,7 +993,8 @@ typedef enum {
  *  that can be easily understood by non-technical people in your business domain.
  *  @param parameters An immutable copy of map containing Name-Value pairs of parameters.
  */
-+ (void)endTimedEvent:(nonnull NSString *)eventName withParameters:(nullable NSDictionary *)parameters;    // non-nil parameters will update the parameters
++ (void)endTimedEvent:(nonnull NSString *)eventName withParameters:(nullable NSDictionary *)parameters
+NS_SWIFT_NAME(endTimedEvent(eventName:parameters:));    // non-nil parameters will update the parameters
 
 #pragma mark - Exceptions Logging
 
@@ -1094,7 +1028,8 @@ typedef enum {
  */
 + (void)logError:(nonnull NSString *)errorID
          message:(nullable NSString *)message
-       exception:(nullable NSException *)exception;
+       exception:(nullable NSException *)exception
+NS_SWIFT_NAME(log(errorId:message:exception:));
 
 /*!
  *  @brief Records an app exception. Commonly used to catch unhandled exceptions.
@@ -1129,7 +1064,8 @@ typedef enum {
 + (void)logError:(nonnull NSString *)errorID
          message:(nullable NSString *)message
        exception:(nullable NSException *)exception
-  withParameters:(nullable NSDictionary*)parameters;
+  withParameters:(nullable NSDictionary*)parameters
+NS_SWIFT_NAME(log(errorId:message:exception:parameters:));
 
 #pragma mark - Error Logging
 
@@ -1152,7 +1088,8 @@ typedef enum {
  */
 + (void)logError:(nonnull NSString *)errorID
          message:(nullable NSString *)message
-           error:(nullable NSError *)error;
+           error:(nullable NSError *)error
+NS_SWIFT_NAME(log(errorId:message:error:));
 
 /*!
  *  @brief Records an app error.
@@ -1176,7 +1113,8 @@ typedef enum {
 + (void)logError:(nonnull NSString *)errorID
          message:(nullable NSString *)message
            error:(nullable NSError *)error
-  withParameters:(nullable NSDictionary*)parameters;
+  withParameters:(nullable NSDictionary*)parameters
+NS_SWIFT_NAME(log(errorId:message:error:parameters:));
 
 /*!
  *  @brief Leave a breadcrumb.
@@ -1294,7 +1232,8 @@ typedef enum {
  *  @param observer an observing object
  *  @param queue the execution queue on which the observer callbacks will be executed
  */
-+ (void)registerFetchObserver:(id<FlurryFetchObserver> _Nonnull)observer withExecutionQueue:(dispatch_queue_t _Nonnull)queue;
++ (void)registerFetchObserver:(id<FlurryFetchObserver> _Nonnull)observer withExecutionQueue:(dispatch_queue_t _Nonnull)queue
+NS_SWIFT_NAME(registerFetchObserver(_:executionQueue:));
 
 /*!
  *  @brief unregister as an observer
@@ -1321,6 +1260,57 @@ typedef enum {
 + (void)fetch;
 
 #endif
+
+/*!
+ *  @brief Explicitly specifies the App Version that Flurry will use to group Analytics data.
+ *  @since 12.0.0
+ *
+ *  This is a method that overrides the App Version Flurry uses for reporting. Flurry will
+ *  use the CFBundleVersion in your info.plist file when this method is not invoked.
+ *
+ *  @note There is a maximum of 605 versions allowed for a single app.
+ *
+ *  @param version The custom version name.
+ */
++ (void)setAppVersion:(nonnull NSString *)version
+NS_SWIFT_NAME(set(appVersion:));
+
+/*!
+ *  @brief Set the timeout for expiring a Flurry session.
+ *  @since 12.0.0
+ *
+ *  This is a method that sets the time the app may be in the background before
+ *  starting a new session upon resume.  The default value for the session timeout is 10
+ *  seconds in the background.
+ *
+ *  @param seconds The time in seconds to set the session timeout to.
+ */
+
++ (void)setSessionContinueSeconds:(int)seconds
+NS_SWIFT_NAME(set(sessionContinueSeconds:));
+
+/*!
+ *  @brief Enables opting out of background sessions being counted towards total sessions.
+ *  @since 12.0.0
+ *
+ *  @param value @c NO to opt out of counting background sessions towards total sessions.
+ *  The default value for the session is @c YES
+ */
+
+
++ (void)setCountBackgroundSessions:(BOOL)value
+NS_SWIFT_NAME(set(countBackgroundSessions:));
+
+
+/*!
+ *  @brief indicates whether a Flurry session has been initialized
+ *  @since 12.0.0
+ *
+ *  @return YES if a Flurry session has been initialized and is actively running
+ */
++ (BOOL)isInitialized;
+
+
 @end
 
 #endif
