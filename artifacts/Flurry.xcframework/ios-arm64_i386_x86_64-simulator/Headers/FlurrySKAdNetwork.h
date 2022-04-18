@@ -1,8 +1,9 @@
 //
 //  FlurrySKAdNetwork.h
-//  SingularAdvertiserSampleApp
+//  Flurry
 //
 //  Created by Hunter Hays on 7/22/20.
+//  Copyright (c) 2021 Yahoo. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

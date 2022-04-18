@@ -2,7 +2,7 @@
 //  Flurry.h
 //  Flurry iOS Analytics Agent
 //
-//  Copyright 2016 Flurry, Inc. All rights reserved.
+//  Copyright (c) 2021 Yahoo. All rights reserved.
 //
 //	Methods in this header file are for use with Flurry Analytics
 
@@ -874,6 +874,7 @@ typedef enum {
  *  @brief Records Apple store IAP transaction params and user defined transaction params manually.
  *  @since 11.0.0
  *
+ *  @deprecated since 12.0.0
  *  @param transactionId a string Id for this IAP transaction
  *  @param productId a string Id for this IAP transaction product
  *  @param quantity an integer representation of quantity of items purchased
@@ -894,8 +895,33 @@ typedef enum {
                                                 productName:(nonnull NSString *)productName
                                            transactionState:(FlurryPaymentTransactionState)transactionState
                                           userDefinedParams:(nullable NSDictionary *)transactionParams
-                                             statusCallback:(nullable void(^)(FlurryTransactionRecordStatus))statusCallback;
+                                             statusCallback:(nullable void(^)(FlurryTransactionRecordStatus))statusCallback __attribute__((deprecated("use +logPaymentTransactionWithTransactionId:productId:quantity:price:currency:productName:transactionState:userDefinedParams:statusCallback:")));
 
+/*!
+ *  @brief Records Apple store IAP transaction params and user defined transaction params manually.
+ *  @since 12.0.0
+ *
+ *  @param transactionId a string Id for this IAP transaction
+ *  @param productId a string Id for this IAP transaction product
+ *  @param quantity an integer representation of quantity of items purchased
+ *  @param price a float representation of price of the item
+ *  @param currency a string representation of currency of the transaction
+ *  @param productName a string representation of product name
+ *  @param transactionState an enum to convert transaction state to integer: 0:Purchasing, 1:Success, 2:Failure, 3:Restored, 4:Deferred
+ *  @param transactionParams a dictionary of user defined transaction params to record
+ *  @param statusCallback a callback gettign called when the status of ID that is associated with the event
+ *
+ */
+
++ (void) logPaymentTransactionWithTransactionId:(nonnull NSString *)transactionId
+                                                  productId:(nonnull NSString *)productId
+                                                   quantity:(NSUInteger)quantity
+                                                      price:(double)price
+                                                   currency:(nonnull NSString *)currency
+                                                productName:(nonnull NSString *)productName
+                                           transactionState:(FlurryPaymentTransactionState)transactionState
+                                          userDefinedParams:(nullable NSDictionary *)transactionParams
+                                             statusCallback:(nullable void(^)(FlurryTransactionRecordStatus))statusCallback;
 
 #pragma mark - Timed Event Logging
 

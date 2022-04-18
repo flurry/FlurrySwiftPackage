@@ -3,7 +3,7 @@
 //  FlurryMessaging
 //
 //  Created by Shruthi Ramesh on 11/16/17.
-//  Copyright © 2017 Flurry Inc. All rights reserved.
+//  Copyright (c) 2021 Yahoo. All rights reserved.
 //
 #if !TARGET_OS_WATCH
 #import <Foundation/Foundation.h>
