@@ -5,15 +5,15 @@ import PackageDescription
 let package = Package(
     name: "Flurry",
     platforms: [
-        .iOS(.v9),
-        .tvOS(.v9),
-        .watchOS(.v2)
+        .iOS(.v10),
+        .tvOS(.v10),
+        .watchOS(.v3)
     ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "Flurry",
-            targets: ["Flurry","CrashReporter"]
+            targets: ["Flurry"]
         ),
         .library(
             name: "FlurryMessaging",
@@ -43,9 +43,5 @@ let package = Package(
             name: "FlurryConfig",
             path: "artifacts/FlurryConfig.xcframework"
         ),
-        .binaryTarget(
-            name: "CrashReporter",
-            path: "artifacts/CrashReporter.xcframework"
-        )
     ]
 )
