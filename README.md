@@ -40,28 +40,9 @@ Choose the version option to get the latest version. 11.1.0 is currently the onl
 
   a. On the Build Phases page, under "Link Binary With Libraries", click on "+" and add "SystemConfiguration.framework"
 
-  Similarly, Flurry Ads requires all of the following frameworks (follow step 6.a above):
-
-  * Ad Support
-
-  * AV Foundation
-
-  * Core Media
-
-  * Core Telephony
-
-  * libz.dylib
-
-  * Safari Services
-
-  * StoreKit
-
-  * WebKit
 
 7. If you are using Objective C proceed with the integration instructions [here](https://developer.yahoo.com/flurry/docs/integrateflurry/ios/#initialize-flurry):
 
 [https://developer.yahoo.com/flurry/docs/integrateflurry/ios/#initialize-flurry](https://developer.yahoo.com/flurry/docs/integrateflurry/ios/#initialize-flurry)
 
-8. If you are using Swift you will need to add the Flurry header files in a bridging header file. Detailed instructions for this are found [here](https://developer.yahoo.com/flurry/docs/integrateflurry/ios-manual/#swift-sdk-integration):
-
-[https://developer.yahoo.com/flurry/docs/integrateflurry/ios-manual/#swift-sdk-integration](https://developer.yahoo.com/flurry/docs/integrateflurry/ios-manual/#swift-sdk-integration)
+8. A bridging header is no longer required when using Flurry's Swift Package. You can import Flurry_iOS_SDK as documented here: https://gist.github.com/flurrydev/d3351c757b41944d04609038439d4992#file-initializeflurrylongform-swift
