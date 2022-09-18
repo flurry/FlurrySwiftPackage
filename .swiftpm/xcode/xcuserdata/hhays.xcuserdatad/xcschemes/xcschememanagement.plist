@@ -25,5 +25,23 @@
 			<integer>3</integer>
 		</dict>
 	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>Flurry</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FlurryConfig</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FlurryMessaging</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
 </dict>
 </plist>
