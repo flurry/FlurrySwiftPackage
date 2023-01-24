@@ -29,6 +29,17 @@ typedef NS_ENUM(NSUInteger, FlurryLogLevel){
 @interface FlurrySessionBuilder : NSObject
 
 /*!
+ *  @brief An api to send gpp compliance data to Flurry on the consent string and section Ids
+ *  @since 12.2.0
+ *
+ *  @param gppString  GPP Consent String
+ *  @param gppSectionIds An array of integer values
+ */
+
+- (FlurrySessionBuilder*) withGppConsent:(NSString*)gppString gppSectionIds:(NSArray<NSNumber *>*) gppSectionIds
+NS_SWIFT_NAME(build(gppString:gppSectionIds:));
+
+/*!
  *  @brief An api to send ccpa compliance data to Flurry on the user's choice to opt out or opt in to data sale to third parties.
  *  @since 10.1.0
  *

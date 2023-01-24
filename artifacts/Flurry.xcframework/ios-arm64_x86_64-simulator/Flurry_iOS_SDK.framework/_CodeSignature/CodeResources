@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/Flurry.h</key>
 		<data>
-		r2KksBXi/Jrw76hEPE+c1jHKNUQ=
+		gEnwAesv83C88BS4IGemLKtFOAU=
 		</data>
 		<key>Headers/FlurryCCPA.h</key>
 		<data>
@@ -26,7 +26,7 @@
 		</data>
 		<key>Headers/FlurrySessionBuilder.h</key>
 		<data>
-		tDjVZISOtFS9bOilgx30kCL9ang=
+		M4nSidt8f8FDmHpWL8Mf8N10OMA=
 		</data>
 		<key>Headers/FlurryUserProperties.h</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		FcodTjJSZKwo1vISKajCUvZl85w=
+		xCKF2ZZCL00+J3rdIi0fOLFzO/4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -62,11 +62,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			r2KksBXi/Jrw76hEPE+c1jHKNUQ=
+			gEnwAesv83C88BS4IGemLKtFOAU=
 			</data>
 			<key>hash2</key>
 			<data>
-			QgQdf+PWnB/rRB8ZGFcv5BQbrgAVMB2ZMRsf8Ys2v68=
+			7LM9NlwVgkxrve9etuLZWQInaHldqII1GGYNCAtkDAI=
 			</data>
 		</dict>
 		<key>Headers/FlurryCCPA.h</key>
@@ -106,11 +106,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tDjVZISOtFS9bOilgx30kCL9ang=
+			M4nSidt8f8FDmHpWL8Mf8N10OMA=
 			</data>
 			<key>hash2</key>
 			<data>
-			ubDf8JuX2VfFnQ+zVc5rdzpSrgbG7gBdDsEO8SJUhcM=
+			qyKnT7yHQFDcFTfl8rKI1oZCJaPsM/rRzZwbqklxS8M=
 			</data>
 		</dict>
 		<key>Headers/FlurryUserProperties.h</key>
