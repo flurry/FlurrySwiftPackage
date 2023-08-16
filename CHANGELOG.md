@@ -2,6 +2,11 @@
 
 ## Version 12.x
 
+### Version 12.4.0 - 08/16/2023
+
+* Resolves crash with timedId when string is very long
+* Minimum iOS version is 12.0
+
 ### Version 12.3.1 - 06/16/2023
 
 * Adds new apis to provide more flexibility for closing timed events
@@ -36,6 +41,7 @@
 
 * Flurry's xcframework uses framework rather than static libraries
 * Fix for tvOS arm64 simulator support 
+
 
 ### Version 12.0.0 - 04/18/2022
 
